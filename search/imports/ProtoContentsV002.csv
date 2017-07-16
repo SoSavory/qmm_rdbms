@@ -1,0 +1,28 @@
+"Dimension (1,2,3)","Particles (B,F)",Trap (Y/N),GS / FT,Spin imbalance,Mass imbalance,,Title,Authors,Links
+3,F,N,FT,N,N,,Spin 1/2 Fermions in the Unitary Regime: A Superfluid of a New Type,"Aurel Bulgac, Joaquin E. Drut, Piotr Magierski",https://arxiv.org/abs/cond-mat/0505374
+3,F,Y,FT,N,N,,Thermodynamics of a Trapped Unitary Fermi Gas,"Aurel Bulgac, Joaquin E. Drut, Piotr Magierski",https://arxiv.org/abs/cond-mat/0701786
+3,F,N,FT,N,N,,Momentum Distribution and Contact of the Unitary Fermi gas,"Joaquín E. Drut, Timo A. Lähde, Timour Ten",https://arxiv.org/abs/1012.5474
+3,F,N,GS,N,Y,,Zero-temperature equation of state of mass-imbalanced resonant Fermi gases,"Jens Braun, Joaquín E. Drut, Dietrich Roscher",https://arxiv.org/abs/1407.2924
+2,F,N,FT,N,N,,"Pressure, compressibility, and contact of the two-dimensional attractive Fermi gas","E. R. Anderson, J. E. Drut",https://arxiv.org/abs/1505.01525
+1,F,N,GS,N,N,,Few-fermion systems in one dimension: Ground- and excited-state energies and contacts,"L. Rammelmüller, W. J. Porter, A. C. Loheac, J. E. Drut",https://arxiv.org/abs/1505.02131
+2,F,N,GS,N,N,,BCS-BEC crossover in a two-dimensional Fermi gas,"G. Bertaina, S. Giorgini",https://arxiv.org/abs/1011.3737
+3,F,Y,GS,Y,N,,Density profiles of polarized Fermi gases confined in harmonic traps,"G. Bertaina, S. Giorgini",https://arxiv.org/pdf/0811.1873.pdf
+3,F,Y,GS,N,N,,Released momentum distribution of a Fermi gas in the BCS-BEC crossover,"M.L. Chiofalo, S. Giorgini, M. Holland",https://arxiv.org/abs/cond-mat/0512460
+3,F,N,GS,Y,N,,Phase separation in a polarized Fermi gas at zero temperature,S. Pilati and S. Giorgini,https://arxiv.org/abs/0710.1549
+3,B,N,FT,N,N,,Equation of state of an interacting Bose gas at finite temperature: a Path Integral Monte Carlo study,"S. Pilati, K. Sakkos, J. Boronat, J. Casulleras, S. Giorgini",https://arxiv.org/abs/cond-mat/0607721
+3,F,N,GS,N,N,,Auxiliary Field quantum Monte Carlo for Strongly Paired Fermions,"J. Carlson, Stefano Gandolfi, Kevin E. Schmidt, Shiwei Zhang",https://arxiv.org/abs/1107.5848
+3,F,N,GS,Y,Y,,Heavy-Light Few Fermion Clusters at Unitarity,"S. Gandolfi, J. Carlson",https://arxiv.org/abs/1006.5186
+3,F,N,GS,Y,Y,,Heavy-Light Fermion Mixtures at Unitarity,"Alexandros Gezerlis, S. Gandolfi, K. E. Schmidt, J. Carlson",https://arxiv.org/abs/0901.3148
+3,F,N,GS,Y,N,,Asymmetric Two-component Fermion Systems in Strong Coupling,"J. Carlson, Sanjay Reddy",https://arxiv.org/abs/cond-mat/0503256
+2,F,N,GS,Y,N,,Ab initio lattice results for Fermi polarons in two dimensions,"Shahin Bour, Dean Lee, H.-W. Hammer, Ulf-G. Meißner",https://arxiv.org/abs/1412.8175
+1,F,Y,GS,N,N,,Four fermions in a one-dimensional harmonic trap: Accuracy of a variational-ansatz approach,"Daniel Pęcak, Amin S. Dehkharghani, Nikolaj T. Zinner, Tomasz Sowiński",https://arxiv.org/abs/1703.08720
+1,BF,Y,GS,N,N,,Analytical and numerical studies of Bose-Fermi mixtures in a one-dimensional harmonic trap,"A. S. Dehkharghani, F. F. Bellotti, N. T. Zinner",https://arxiv.org/abs/1703.01836
+1,B,Y,GS,Y,Y,,Entanglement of an Impurity in a Few-Body One-Dimensional Ideal Bose System,"M. A. García-March, A. S. Dehkharghani, N. T. Zinner",https://arxiv.org/abs/1512.03367
+1,F,Y,GS,N,N,,An interpolatory ansatz captures the physics of one-dimensional confined Fermi systems,"M. E. S. Andersen, A. S. Dehkharghani, A. G. Volosniev, E. J. Lindgren, N. T. Zinner
+",https://arxiv.org/abs/1512.08905
+2,F,N,FT,N,N,,Comparison of strong-coupling theories for a two-dimensional Fermi gas,"Brendan C. Mulkerin, Kristian Fenech, Paul Dyke, Chris J. Vale, Xia-Ji Liu, Hui Hu",https://arxiv.org/abs/1509.08225
+2,F,Y,FT,N,N,,First and second sound of a unitary Fermi gas in highly oblate harmonic traps,"Hui Hu, Paul Dyke, Chris J. Vale, Xia-Ji Liu",https://arxiv.org/abs/1410.1340
+1,F,Y,FT,N,N,,First and second sound of a unitary Fermi gas in highly elongated harmonic traps,"Xia-Ji Liu, Hui Hu",https://arxiv.org/abs/1410.1336
+3,F,Y,FT,N,N,,Path integral Monte Carlo determination of the fourth-order virial coefficient for unitary two-component Fermi gas with zero-range interactions,"Yangqian Yan, D. Blume",https://arxiv.org/abs/1602.02328
+3,F,N,FT,N,N,,Universal thermodynamics of degenerate quantum gases in the unitarity limit ,T.-L. Ho,"Phys. Rev. Lett. 92, 090402 (2004)."
+3,F,N,FT,N,N,,Virial expansion for a strongly correlated Fermi gas,"X.-J. Liu, H. Hu, and P. D. Drummond"," Phys. Rev. Lett. 102, 160401 (2009)."
