@@ -19,24 +19,27 @@ Setting up the DB
     GRANT ALL PRIVILEGES ON DATABASE qmm TO qmmuser;
     
     \q
-  exit
-sudo pip install virtualenv
+    exit
+    sudo pip install virtualenv
 
-To use the virtual environment, use: source myprojectenv/bin/activate
+To use the virtual environment, use: 
+    source myprojectenv/bin/activate
 
 Start the environment, and install Django with Postgres' adapter to the project directory
-  pip install django psycopg2
+    pip install django psycopg2
   
 Connect the app to Postgres:
-  cd ~/qmm_rdbms
-  python manage.py makemigrations
-  python manage.py migrate
+    cd ~/qmm_rdbms
+    python manage.py makemigrations
+    python manage.py migrate
   
  Then make a superuser for the baked in Django admin:
-  python manage.py createsuperuser
+    python manage.py createsuperuser
   
  The app can be started by running:
-  python manage.py runserver
+    python manage.py runserver
+    
+    
  Then visiting localhost:8000 in a browser window.
  The baked in admin can be visited by going to localhost:8000/admin and logging in with the credentials you generated previously.
  
