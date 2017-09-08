@@ -1,0 +1,44 @@
+<ListRecords>
+  <record>
+    <header>
+      <identifier>
+        1010101
+      </identifier>
+    </header>
+    <metadata>
+      <arXivRaw>
+        <title>
+          Test
+        </title>
+        <authors>
+          Avery Marsh
+        </authors>
+        <abstract>
+          Trying to get importer to work
+        </abstract>
+      </arXivRaw>
+    </metadata>
+
+  </record>
+  <record>
+    <header>
+      <identifier>
+        1010101
+      </identifier>
+    </header>
+    <metadata>
+      <arXivRaw>
+        <title>
+          Test
+        </title>
+        <authors>
+          Avery Marsh
+        </authors>
+        <abstract>
+          Trying to get importer to work
+        </abstract>
+      </arXivRaw>
+    </metadata>
+
+  </record>
+</ListRecords>

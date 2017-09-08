@@ -58,7 +58,7 @@ ROOT_URLCONF = 'qmm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Redirect to the search app after logging in
+LOGIN_REDIRECT_URL = '/search'
+
+# allows us to view emails in console, so we can copy and paste password reset links
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

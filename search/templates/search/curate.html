@@ -1,0 +1,51 @@
+
+<head>
+  {% load static %}
+  <script type="text/javascript" src="{% static "js/jquery-3.1.1.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/curate.js" %}"></script>
+  <style>
+    body{margin: 0;padding: 0;}
+    #content{width: 100%; margin: 0 auto; text-align: center;}
+    ul#article_xml_attributes{list-style: none; display: flex; flex-direction: column; }
+    ul#article_xml_attributes li{width: 80%; border: 1px solid black; margin: 0 auto; text-align: left; padding: 1em;}
+  </style>
+</head>
+
+<body>
+  <div id="content">
+    <h1>Curation of Articles</h1>
+    <ul id="article_xml_attributes">
+      <li>
+        <span>ID: </span>
+        <div id="id"></div>
+      </li>
+      <li>
+        <span>Title: </span>
+        <div id="title"></div>
+      </li>
+
+      <li>
+        <span>Authors: </span>
+        <div id="authors"></div>
+      </li>
+
+      <li>
+        <span>ArXiv ID: </span>
+        <div id="arxiv_id"></div>
+      </li>
+
+      <li>
+        <span>Abstract: </span>
+        <div id="abstract"></div>
+      </li>
+    </ul>
+
+    <form method="POST" action="">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Curate Article"></input>
+    </form>
+
+  </div>
+</body>
