@@ -15,6 +15,7 @@
 <body>
   <div id="content">
     <h1>Curation of Articles</h1>
+    <h4 id="current_user"></h4>
     <ul id="article_xml_attributes">
       <li>
         <span>ID: </span>
@@ -41,9 +42,12 @@
       </li>
     </ul>
 
-    <form method="POST" action="">
+    <form method="POST" action="http://localhost:8000/search/curate_arxiv_article/">
       {% csrf_token %}
       {{ form.as_p }}
+      <input type="hidden" name="title" id="hidden_title"/>
+      <input type="hidden" name="authors" id="hidden_authors"/>
+      <input type="hidden" name="link" id="hidden_link"/>
       <input type="submit" value="Curate Article"></input>
     </form>
 

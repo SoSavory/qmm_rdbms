@@ -16,6 +16,7 @@ class ArxivXML(models.Model):
     abstract = models.TextField()
     arxiv_id = models.CharField(max_length=200)
     curated = models.BooleanField(default=False)
+    user = models.ForeignKey(User)
 
 class Article(models.Model):
     BOSON = 'bs'

@@ -132,3 +132,13 @@ LOGIN_REDIRECT_URL = '/search'
 
 # allows us to view emails in console, so we can copy and paste password reset links
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'search_cache',
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
