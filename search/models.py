@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
 
 # need archive and pre archiv identification... every record has a unique identifier within arxiv, we can set up a parallel system for pre arxiv and non-arxiv
 

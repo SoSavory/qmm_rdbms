@@ -7,7 +7,7 @@ function grabArticle(){
     $("#id").html(xml.id);
     $("#title").html(xml.title);
     $("#authors").html(xml.authors);
-    $("#arxiv_id").html(xml.arxiv_id);
+    $("#arxiv_id").html('<a href="https://arxiv.org/abs/' + xml.arxiv_id.replace("oai:arXiv.org:", "") + '">' + xml.arxiv_id + '</a>');
     $("#abstract").html(xml.abstract);
   });
 }

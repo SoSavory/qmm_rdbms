@@ -24,6 +24,7 @@ def index(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
+@login_required
 def arxiv_xml(request):
     arxiv = ArxivXML.objects.filter(curated="0")[0:1].get()
     response_data = {}
@@ -34,7 +35,6 @@ def arxiv_xml(request):
     response_data['arxiv_id'] = arxiv.arxiv_id
     return JsonResponse(response_data)
 
-@login_required
 def curate(request):
     template = loader.get_template('search/curate.html')
     form = ArticleForm()
@@ -43,6 +43,4 @@ def curate(request):
 
 
 def curate_arxiv_article(request):
-    print(request)
-    return JsonResponse({'dimension': "Hi"})
-# @login_requred
+    return JsonResponse("hello")
