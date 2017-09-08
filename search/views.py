@@ -38,6 +38,7 @@ def arxiv_xml(request):
     request.session["arxiv_xml_id"] = arxiv.id
     return JsonResponse(response_data)
 
+@login_required
 def curate(request):
     template = loader.get_template('search/curate.html')
     form = ArticleForm()
@@ -45,12 +46,12 @@ def curate(request):
     return HttpResponse(template.render(context, request))
 
 # At some point need to finalize validations and making this workflow a little more professional
+@login_required
 def curate_arxiv_article(request):
     user_id = request.user.id
     form = ArticleForm(request.POST)
 
     if form.is_valid():
-        # For fields that are not fed through the form, need a custom cleaner, or figure out how to implement those into the form object
         arxiv_xml_inst = get_object_or_404(ArxivXML, pk= request.session.get('arxiv_xml_id', False))
 
         article_inst = Article(trap= form.cleaned_data['trap'],
