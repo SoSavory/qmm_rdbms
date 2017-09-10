@@ -65,7 +65,7 @@ def curate_arxiv_article(request):
                                 dimension      = form.cleaned_data['dimension'],
                                 particles      = form.cleaned_data['particles'],
                                 title          = arxiv_xml_inst.title,
-                                link           = "https://arxiv.org/abs/" + xml.arxiv_id.replace("oai:arXiv.org:", ""),
+                                link           = "https://arxiv.org/abs/" + arxiv_xml_inst.arxiv_id.replace("oai:arXiv.org:", ""),
                                 authors        = arxiv_xml_inst.authors,
                                 )
 
@@ -87,7 +87,6 @@ def handle_arxiv_xml_upload(request):
     form = UploadArxivXMLForm(request.POST, request.FILES)
 
     if form.is_valid():
-        print(request.FILES['file'])
         handle_uploaded_arxiv_xml(request.FILES['file'], user_id)
 
     return redirect('upload_arxiv_xml')

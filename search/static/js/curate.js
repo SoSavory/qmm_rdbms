@@ -7,7 +7,7 @@ function grabArticle(){
     $("#id").html(xml.id);
     $("#title").html(xml.title);
     $("#authors").html(xml.authors);
-    $("#arxiv_id").html('<a href="https://arxiv.org/abs/' + xml.arxiv_id.replace("oai:arXiv.org:", "") + '">' + xml.arxiv_id + '</a>');
+    $("#arxiv_id").html('<a target="_blank" href="https://arxiv.org/abs/' + xml.arxiv_id.replace("oai:arXiv.org:", "") + '">' + xml.arxiv_id + '</a>');
     $("#abstract").html(xml.abstract);
 
     $("#current_user").html("Current User: " + xml.user_name)
