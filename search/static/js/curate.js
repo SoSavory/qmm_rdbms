@@ -10,10 +10,6 @@ function grabArticle(){
     $("#arxiv_id").html('<a href="https://arxiv.org/abs/' + xml.arxiv_id.replace("oai:arXiv.org:", "") + '">' + xml.arxiv_id + '</a>');
     $("#abstract").html(xml.abstract);
 
-    $("#hidden_title").attr("value", xml.title);
-    $("#hidden_authors").attr("value", xml.authors);
-    $("#hidden_link").attr("value", "https://arxiv.org/abs/" + xml.arxiv_id.replace("oai:arXiv.org:", ""));
-
     $("#current_user").html("Current User: " + xml.user_name)
   });
 }

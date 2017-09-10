@@ -13,7 +13,6 @@ class Command(BaseCommand):
         # print(root.tag)
 
         list_records = root.find('{http://www.openarchives.org/OAI/2.0/}ListRecords')
-        print(list_records)
 
         for record in list_records.iter('{http://www.openarchives.org/OAI/2.0/}record'):
 
