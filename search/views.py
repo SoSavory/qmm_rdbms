@@ -68,6 +68,7 @@ def curate_arxiv_article(request):
                                 link           = "https://arxiv.org/abs/" + arxiv_xml_inst.arxiv_id.replace("oai:arXiv.org:", ""),
                                 authors        = arxiv_xml_inst.authors,
                                 )
+        article_inst.save()
 
         arxiv_xml_inst.curated = True
         arxiv_xml_inst.save()
