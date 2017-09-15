@@ -50,15 +50,12 @@ def arxiv_xml(request):
 #create an array of skipped arxiv xml ids
 def skip_arxiv_xml_curation(request):
     if 'skipped_xml_ids' not in request.session:
-        request.session['skipped_xml_ids'] = list(request.POST['skip_id'])
+        request.session['skipped_xml_ids'] = [int(request.POST['skip_id'])]
     else:
         temp_session = request.session['skipped_xml_ids']
         temp_session.append(int(request.POST['skip_id']))
 
         request.session['skipped_xml_ids'] = temp_session
-
-    # temp_session.append(request.POST['skip_id'])
-    # request.session["skipped_xml_ids"] = temp_session
     return redirect("curate")
 
 @login_required
@@ -67,7 +64,7 @@ def curate(request):
     template = loader.get_template('search/curate.html')
     form = ArticleForm()
     context = {'form': form}
-    
+
     return HttpResponse(template.render(context, request))
 
 # At some point need to finalize validations and making this workflow a little more professional
