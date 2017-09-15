@@ -29,7 +29,7 @@ def index(request):
 @login_required
 def arxiv_xml(request):
     user_id = request.user.id
-    arxiv = ArxivXML.objects.filter(curated="0").filter(user_id=user_id)[0:1].get()
+    arxiv = ArxivXML.objects.filter(curated="0").filter(user_id=user_id).exclude(pk__in=request.session.get("skipped_xml_ids", []))[0:1].get()
 
     response_data = {}
     response_data['id'] = arxiv.id
@@ -38,15 +38,36 @@ def arxiv_xml(request):
     response_data['abstract'] = arxiv.abstract
     response_data['arxiv_id'] = arxiv.arxiv_id
     response_data['user_name'] = request.user.username
+    print "===================================================================="
+    print request.session.get("skipped_xml_ids", "nothing")
+    print "===================================================================="
 
     request.session["arxiv_xml_id"] = arxiv.id
+
     return JsonResponse(response_data)
 
 @login_required
+#create an array of skipped arxiv xml ids
+def skip_arxiv_xml_curation(request):
+    if 'skipped_xml_ids' not in request.session:
+        request.session['skipped_xml_ids'] = list(request.POST['skip_id'])
+    else:
+        temp_session = request.session['skipped_xml_ids']
+        temp_session.append(int(request.POST['skip_id']))
+
+        request.session['skipped_xml_ids'] = temp_session
+
+    # temp_session.append(request.POST['skip_id'])
+    # request.session["skipped_xml_ids"] = temp_session
+    return redirect("curate")
+
+@login_required
+# Happens before arvix_xml. Workflow goes curate -> (ajax)arxiv_xml -> curate_arxiv_article
 def curate(request):
     template = loader.get_template('search/curate.html')
     form = ArticleForm()
     context = {'form': form}
+    
     return HttpResponse(template.render(context, request))
 
 # At some point need to finalize validations and making this workflow a little more professional

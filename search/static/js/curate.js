@@ -9,6 +9,7 @@ function grabArticle(){
     $("#authors").html(xml.authors);
     $("#arxiv_id").html('<a target="_blank" href="https://arxiv.org/abs/' + xml.arxiv_id.replace("oai:arXiv.org:", "") + '">' + xml.arxiv_id + '</a>');
     $("#abstract").html(xml.abstract);
+    $("#skip_id").attr("value", xml.id);
 
     $("#current_user").html("Current User: " + xml.user_name)
   });

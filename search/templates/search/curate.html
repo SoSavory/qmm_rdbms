@@ -47,6 +47,11 @@
       {{ form.as_p }}
       <input type="submit" value="Curate Article"></input>
     </form>
+    <form method="POST" action="http://localhost:8000/search/skip_arxiv_xml_curation/">
+      {% csrf_token %}
+      <input type="hidden" name="skip_id" id="skip_id">
+      <input type="submit" value="Skip Article"></input>
+    </form>
 
   </div>
 </body>
