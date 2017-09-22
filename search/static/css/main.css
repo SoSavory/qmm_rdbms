@@ -1,0 +1,4 @@
+body{margin: 0;padding: 0;}
+#content{width: 100%; margin: 0 auto; text-align: center;}
+ul#article_xml_attributes{list-style: none; display: flex; flex-direction: column; }
+ul#article_xml_attributes li{width: 80%; border: 1px solid black; margin: 0 auto; text-align: left; padding: 1em;}

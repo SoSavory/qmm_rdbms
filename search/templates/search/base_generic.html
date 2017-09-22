@@ -17,7 +17,13 @@
             <a href="{% url 'curate' %}">Curate Articles</a>
           </li>
           <li class="navigation_list_li">
-            <a href="{% url 'upload_arxiv_xml' %}" >Upload Arxiv XML</a>
+            <a href="{% url 'upload_arxiv_xml' %}">Upload Arxiv XML</a>
+          </li>
+          <li class="navigation_list_li">
+            <a href="{% url 'articles' %}" >Articles</a>
+          </li>
+          <li class="navigation_list_li">
+            <a href="{% url 'uncurated_articles' %}" >Uncurated Articles</a>
           </li>
           <li class="navigation_list_li">
             <a href="{% url 'profile' %}" >{{ user.get_username }}</a>
@@ -34,8 +40,12 @@
         </ul>
       {% endif %}
     </div>
+      <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
 
-    {% block content %}
+    {% block execute_script %}
     {% endblock %}
   </body>
 </html>

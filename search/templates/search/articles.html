@@ -1,7 +1,7 @@
 {% extends 'search/base_generic.html'%}
 
 {% block content %}
-
+<p>{{ articles|length }} Curated Articles!</p>
   <ul class="resource_list">
     {% for article in articles %}
       <li class="resource_list_li">

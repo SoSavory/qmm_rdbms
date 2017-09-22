@@ -1,20 +1,10 @@
-<head>
-  {% load static %}
-  <script type="text/javascript" src="{% static "js/jquery-3.1.1.min.js" %}"></script>
-  <script type="text/javascript" src="{% static "js/main.js" %}"></script>
-  <style>
-    body{margin: 0;padding: 0;}
-    #content{width: 100%; margin: 0 auto; text-align: center;}
-  </style>
-</head>
 
+{% extends 'search/base_generic.html' %}
+{% block content %}
 
-<body>
-    <div id="content">
-      <form enctype="multipart/form-data" method="POST" action="http://localhost:8000/search/handle_arxiv_xml_upload/">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Upload File"></input>
-      </form>
-  </div>
-</body>
+  <form enctype="multipart/form-data" method="POST" action="http://localhost:8000/search/handle_arxiv_xml_upload/">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Upload File"></input>
+  </form>
+{% endblock %}

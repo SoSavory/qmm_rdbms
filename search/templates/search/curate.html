@@ -1,19 +1,6 @@
+  {% extends 'search/base_generic.html'%}
 
-<head>
-  {% load static %}
-  <script type="text/javascript" src="{% static "js/jquery-3.1.1.min.js" %}"></script>
-  <script type="text/javascript" src="{% static "js/main.js" %}"></script>
-  <script type="text/javascript" src="{% static "js/curate.js" %}"></script>
-  <style>
-    body{margin: 0;padding: 0;}
-    #content{width: 100%; margin: 0 auto; text-align: center;}
-    ul#article_xml_attributes{list-style: none; display: flex; flex-direction: column; }
-    ul#article_xml_attributes li{width: 80%; border: 1px solid black; margin: 0 auto; text-align: left; padding: 1em;}
-  </style>
-</head>
-
-<body>
-  <div id="content">
+  {% block content %}
     <h1>Curation of Articles</h1>
     <h4 id="current_user"></h4>
     <ul id="article_xml_attributes">
@@ -53,12 +40,13 @@
       <input type="submit" value="Skip Article"></input>
     </form>
 
+  {% endblock %}
+
+  {% block execute_script %}
     <script>
       $(document).ready(function(){
         $form = $('form')[0]
         grabArticle();
       });
     </script>
-
-  </div>
-</body>
+  {% endblock %}
