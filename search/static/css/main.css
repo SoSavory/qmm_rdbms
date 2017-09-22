@@ -1,4 +1,57 @@
-body{margin: 0;padding: 0;}
+body{margin: 0;padding: 0; background-color: #f1f1f1; font-family: Ubuntu, Arial, sans-serif;}
 #content{width: 100%; margin: 0 auto; text-align: center;}
 ul#article_xml_attributes{list-style: none; display: flex; flex-direction: column; }
 ul#article_xml_attributes li{width: 80%; border: 1px solid black; margin: 0 auto; text-align: left; padding: 1em;}
+
+
+#navigation{
+  width: 100%;
+  padding: 0.5em 0;
+  background-color: #3A1772;
+}
+
+#navigation_list{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.navigation_list_li{
+  padding: 0.5em;
+}
+
+.nav_link{
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.nav_link:hover{
+  color: rgba(255,255,255,1);
+}
+
+.resource_list{
+  list-style: none;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.resource_list_li{
+  background-color: white;
+  color: rgba(58,23,114,0.7);
+  text-align: left;
+  padding:0.35em 0 0.25em 0.35em;
+}
+
+.resource_list_li:nth-of-type(odd){
+  background-color: rgba(58,23,114,0.7);
+}
+
+.resource_list_li:nth-of-type(odd) a{
+  color: white;
+}
+
+.resource_list_li a{
+  text-decoration: none;
+  color: rgba(58,23,114,0.7);
+}
