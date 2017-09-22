@@ -1,0 +1,13 @@
+{% extends 'search/base_generic.html'%}
+
+{% block content %}
+
+  <ul class="resource_list">
+    {% for article in articles %}
+      <li class="resource_list_li">
+        <a href="{% url 'article' article_id=article.pk %}">{{ article.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

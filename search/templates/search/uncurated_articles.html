@@ -1,0 +1,12 @@
+{% extends 'search/base_generic.html' %}
+
+{% block content %}
+  <p>{{ uncurated_articles|length }} uncurated articles</p>
+  <ul class="resource_list">
+    {% for uncurated_article in uncurated_articles %}
+      <li class="resource_list_li">
+        <a href="{% url 'uncurated_article' uncurated_article_id=uncurated_article.pk %}">{{ uncurated_article.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -109,3 +109,35 @@ def handle_arxiv_xml_upload(request):
         handle_uploaded_arxiv_xml(request.FILES['file'], user_id)
 
     return redirect('upload_arxiv_xml')
+
+@login_required
+def articles(request):
+    template = loader.get_template('search/articles.html')
+    articles = Article.objects.all
+    context = {'articles': articles}
+    return HttpResponse(template.render(context, request))
+
+@login_required
+def uncurated_articles(request):
+    template = loader.get_template('search/uncurated_articles.html')
+    uncurated_articles = ArxivXML.objects.filter(curated="0")
+    context = {'uncurated_articles': uncurated_articles}
+    return HttpResponse(template.render(context, request))
+
+@login_required
+def article(request, article_id):
+    template = loader.get_template('search/article.html')
+    article = get_object_or_404(Article, pk= article_id)
+    context = {'article': article}
+    return HttpResponse(template.render(context, request))
+
+@login_required
+def uncurated_article(request, uncurated_article_id):
+    template = loader.get_template('search/uncurated_article.html')
+    uncurated_article = get_object_or_404(ArxivXML, pk= uncurated_article_id)
+    context = {'uncurated_article': uncurated_article}
+    return HttpResponse(template.render(context, request))
+
+@login_required
+def profile(request):
+    return HttpResponse("Hello")

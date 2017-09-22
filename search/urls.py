@@ -4,6 +4,14 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index' ),
+
+    url(r'^articles/$', views.articles, name='articles'),
+    url(r'^articles/(?P<article_id>[0-9]+)/$', views.article, name='article'),
+
+    url(r'^uncurated_articles/$', views.uncurated_articles, name='uncurated_articles'),
+    url(r'^uncurated_article/(?P<uncurated_article_id>[0-9]+)/$', views.uncurated_article, name='uncurated_article'),
+
+    url(r'^profile/$', views.profile, name='profile'),
     url(r'^curate/$', views.curate, name='curate'),
     url(r'^arxiv_xml/$', views.arxiv_xml, name='arxiv_xml'),
     url(r'^curate_arxiv_article/$', views.curate_arxiv_article, name='curate_arxiv_article'),

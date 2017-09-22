@@ -1,0 +1,41 @@
+{% load static %}
+
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script type="text/javascript" src="{% static "js/jquery-3.1.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/curate.js" %}"></script>
+
+  </head>
+
+  <body>
+    <div id="navigation">
+      {% if user.is_authenticated %}
+        <ul id='navigation_list'>
+          <li class="navigation_list_li">
+            <a href="{% url 'curate' %}">Curate Articles</a>
+          </li>
+          <li class="navigation_list_li">
+            <a href="{% url 'upload_arxiv_xml' %}" >Upload Arxiv XML</a>
+          </li>
+          <li class="navigation_list_li">
+            <a href="{% url 'profile' %}" >{{ user.get_username }}</a>
+          </li>
+          <li class="navigation_list_link">
+            <a href="{% url 'logout' %}?next={{request.path}}">Logout</a>
+          </li>
+        </ul>
+      {% else %}
+        <ul id='navigation_list'>
+          <li class="navigation_list_li">
+            <a href="{% url 'login' %}?next={{request.path}}">Login</a>
+          </li>
+        </ul>
+      {% endif %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

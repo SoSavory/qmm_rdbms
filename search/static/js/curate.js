@@ -33,9 +33,3 @@ function submitCuration(element){
     })
   })
 }
-
-$(document).ready(function(){
-  $form = $('form')[0]
-  grabArticle();
-  // submitCuration($form);
-});
