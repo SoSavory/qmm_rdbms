@@ -2,7 +2,7 @@
 {% extends 'search/base_generic.html' %}
 {% block content %}
 
-  <form enctype="multipart/form-data" method="POST" action="{% url handle_arxiv_xml_upload %}">
+  <form enctype="multipart/form-data" method="POST" action="{% url 'handle_arxiv_xml_upload' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Upload File"></input>
