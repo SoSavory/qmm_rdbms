@@ -29,12 +29,12 @@
       </li>
     </ul>
 
-    <form method="POST" action="http://localhost:8000/search/curate_arxiv_article/">
+    <form method="POST" action="{% url 'curate_arxiv_article' %}">
       {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" value="Curate Article"></input>
     </form>
-    <form method="POST" action="http://localhost:8000/search/skip_arxiv_xml_curation/">
+    <form method="POST" action="{% url 'skip_arxiv_xml_curation' %}">
       {% csrf_token %}
       <input type="hidden" name="skip_id" id="skip_id">
       <input type="submit" value="Skip Article"></input>

@@ -1,6 +1,7 @@
 function grabArticle(){
   $.ajax({
     method: "GET",
+
     url: "http://localhost:8000/search/arxiv_xml/",
 
   }).done(function(xml){
