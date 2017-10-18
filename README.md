@@ -12,9 +12,9 @@ Setting up the DB
     CREATE DATABASE qmm;
     CREATE USER qmmuser WITH PASSWORD 'qmm';
 
-    ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
-    ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
-    ALTER ROLE myprojectuser SET timezone TO 'UTC';
+    ALTER ROLE qmmuser SET client_encoding TO 'utf8';
+    ALTER ROLE qmmuser SET default_transaction_isolation TO 'read committed';
+    ALTER ROLE qmmuser SET timezone TO 'UTC';
 
     GRANT ALL PRIVILEGES ON DATABASE qmm TO qmmuser;
     
@@ -24,7 +24,7 @@ Setting up the DB
 
 To use the virtual environment, use: 
 
-     source myprojectenv/bin/activate
+     source qmmenv/bin/activate
 
 Start the environment, and install Django with Postgres' adapter to the project directory
 
