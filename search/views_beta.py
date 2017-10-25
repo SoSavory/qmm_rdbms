@@ -29,9 +29,7 @@ def index(request):
 @login_required
 def arxiv_xml(request):
     user_id = request.user.id
-
-    user_arxiv_xml = UserArxivXML.objects.filter(user = user_id).filter(curated="0").exclude(arxiv_xml__in=request.session.get("skipped_xml_ids", []))[0:1].get()
-    arxiv = user_arxiv_xml.arxiv_xml
+    arxiv = ArxivXML.objects.filter(curated="0").filter(user_id=user_id).exclude(pk__in=request.session.get("skipped_xml_ids", []))[0:1].get()
 
     response_data = {}
     response_data['id'] = arxiv.id
@@ -44,7 +42,7 @@ def arxiv_xml(request):
     print request.session.get("skipped_xml_ids", "nothing")
     print "===================================================================="
 
-    request.session["user_arxiv_xml_id"] = user_arxiv_xml.id
+    request.session["arxiv_xml_id"] = arxiv.id
 
     return JsonResponse(response_data)
 
@@ -74,7 +72,7 @@ def curate(request):
 def curate_arxiv_article(request, pk):
     referer = request.META.get('HTTP_REFERER', None) or '/'
     user_id = request.user.id
-
+    print pk
     if pk != None:
         article = get_object_or_404(Article, pk=pk)
         form = ArticleForm(request.POST, instance=article)
@@ -82,8 +80,7 @@ def curate_arxiv_article(request, pk):
         form = ArticleForm(request.POST)
 
     if form.is_valid():
-        user_arxiv_xml_inst = get_object_or_404(UserArxivXML, pk= request.session.get('user_arxiv_xml_id', False))
-        arxiv_xml_inst = user_arxiv_xml_inst.arxiv_xml
+        arxiv_xml_inst = get_object_or_404(ArxivXML, pk= request.session.get('arxiv_xml_id', False))
 
         if pk != None:
             article_inst = form
@@ -98,14 +95,14 @@ def curate_arxiv_article(request, pk):
                                     title          = arxiv_xml_inst.title,
                                     link           = "https://arxiv.org/abs/" + arxiv_xml_inst.arxiv_id.replace("oai:arXiv.org:", ""),
                                     authors        = arxiv_xml_inst.authors,
-                                    user_arxiv_xml = user_arxiv_xml_inst,
                                     )
 
         article_inst.save()
+        article_review = ArticleReview(user = user_id, article = article_inst, arxivxml = arxiv_xml_inst)
+        article_review.save()
 
-
-        user_arxiv_xml_inst.curated = True
-        user_arxiv_xml_inst.save()
+        arxiv_xml_inst.curated = True
+        arxiv_xml_inst.save()
     return HttpResponseRedirect(referer)
 
 @login_required
@@ -129,15 +126,14 @@ def handle_arxiv_xml_upload(request):
 @login_required
 def articles(request):
     template = loader.get_template('search/articles.html')
-    arxiv_xmls = UserArxivXML.objects.filter(user_id = request.user.id).filter(curated="1")
-    articles = Article.objects.filter(user_arxiv_xml__in=arxiv_xmls)
+    articles = Article.objects.all
     context = {'articles': articles}
     return HttpResponse(template.render(context, request))
 
 @login_required
 def uncurated_articles(request):
     template = loader.get_template('search/uncurated_articles.html')
-    uncurated_articles = UserArxivXML.objects.filter(curated="0").arxiv_xml
+    uncurated_articles = ArxivXML.objects.filter(curated="0")
     context = {'uncurated_articles': uncurated_articles}
     return HttpResponse(template.render(context, request))
 

@@ -1,11 +1,12 @@
 import xml.etree.ElementTree as ET
 from django.db import models
-from .models import ArxivXML
+from .models import ArxivXML, UserArxivXML, User
 
 def handle_uploaded_arxiv_xml(f, user_id):
     tree = ET.parse(f)
     root = tree.getroot()
     # print(root.tag)
+
 
     list_records = root.find('{http://www.openarchives.org/OAI/2.0/}ListRecords')
 
@@ -26,6 +27,12 @@ def handle_uploaded_arxiv_xml(f, user_id):
             arxiv_xml = ArxivXML(arxiv_id=arxiv_id,
                                  title=title,
                                  authors=authors,
-                                 abstract=abstract,
-                                 user_id=user_id)
+                                 abstract=abstract)
             arxiv_xml.save()
+
+        else:
+            arxiv_xml = ArxivXML.objects.filter(arxiv_id= arxiv_id)[0]
+
+        if not UserArxivXML.objects.filter(arxiv_xml = arxiv_xml).filter(user = user_id).exists():
+            user_arxiv_xml = UserArxivXML(user__id = user_id, arxiv_xml = arxiv_xml)
+            user_arxiv_xml.save()

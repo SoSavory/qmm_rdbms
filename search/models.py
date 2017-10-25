@@ -15,11 +15,15 @@ class ArxivXML(models.Model):
     authors = models.CharField(max_length=1000)
     abstract = models.TextField()
     arxiv_id = models.CharField(max_length=200)
-    curated = models.BooleanField(default=False)
+    users = models.ManyToManyField(User, through='UserArxivXML')
+
+class UserArxivXML(models.Model):
     user = models.ForeignKey(User)
+    arxiv_xml = models.ForeignKey(ArxivXML)
+    curated = models.BooleanField(default=False)
 
 class Article(models.Model):
-    BOSON = 'bs'
+    BOSON   = 'bs'
     FERMION = 'fr'
     GS      = 'gs'
     FT      = 'ft'
@@ -47,5 +51,8 @@ class Article(models.Model):
     title = models.CharField(max_length=200)
     authors = models.CharField(max_length=200)
     link = models.CharField(max_length=200, default="none")
+
+
+    user_arxiv_xml = models.ForeignKey(UserArxivXML)
     def __str__(self):
         return self.title

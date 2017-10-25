@@ -5,4 +5,11 @@
 
 This is Article: {{ article.title }}
 
+<!-- Eventually put permissions in here -->
+<form method="POST" action="{% url 'curate_arxiv_article' pk=article.id %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Curate Article"></input>
+</form>
+
 {% endblock %}
