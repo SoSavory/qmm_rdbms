@@ -137,7 +137,11 @@ def articles(request):
 @login_required
 def uncurated_articles(request):
     template = loader.get_template('search/uncurated_articles.html')
-    uncurated_articles = UserArxivXML.objects.filter(curated="0").arxiv_xml
+    uncurated_articles = set()
+
+    for uax in UserArxivXML.objects.filter(curated="0").filter(user_id=request.user.id).select_related('arxiv_xml'):
+        uncurated_articles.add(uax.arxiv_xml)
+
     context = {'uncurated_articles': uncurated_articles}
     return HttpResponse(template.render(context, request))
 
