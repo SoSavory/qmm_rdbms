@@ -5,4 +5,11 @@
 
 This is Uncurated Article: {{ uncurated_article.title }}
 
+<!-- Eventually put permissions in here -->
+<form method="POST" action="{% url 'uncurated_article' uncurated_article_id=uncurated_article.id %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Curate Article"></input>
+</form>
+
 {% endblock %}

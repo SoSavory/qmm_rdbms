@@ -157,8 +157,40 @@ def article(request, article_id):
 def uncurated_article(request, uncurated_article_id):
     template = loader.get_template('search/uncurated_article.html')
     uncurated_article = get_object_or_404(ArxivXML, pk= uncurated_article_id)
-    context = {'uncurated_article': uncurated_article}
-    return HttpResponse(template.render(context, request))
+    user_arxiv_xml_inst = uncurated_article.userarxivxml_set.filter(user_id= request.user.id)[0]
+
+    if request.method == "POST":
+        form = ArticleForm(request.POST)
+
+        if form.is_valid():
+            article_inst = Article(trap= form.cleaned_data['trap'],
+                                    spin_imbalance = form.cleaned_data['spin_imbalance'],
+                                    mass_imbalance = form.cleaned_data['mass_imbalance'],
+                                    gs_ft          = form.cleaned_data['gs_ft'],
+                                    dimension      = form.cleaned_data['dimension'],
+                                    particles      = form.cleaned_data['particles'],
+                                    title          = uncurated_article.title,
+                                    link           = "https://arxiv.org/abs/" + uncurated_article.arxiv_id.replace("oai:arXiv.org:", ""),
+                                    authors        = uncurated_article.authors,
+                                    user_arxiv_xml = user_arxiv_xml_inst,
+                                    )
+
+            article_inst.save()
+
+            user_arxiv_xml_inst.curated = True
+            user_arxiv_xml_inst.save()
+
+
+    elif request.method == "GET":
+        form = ArticleForm()
+
+    context = {'uncurated_article': uncurated_article, 'form': form}
+
+    if request.method == "POST":
+        endpoint = redirect('article', article_id=article_inst.id)
+    elif request.method == "GET":
+        endpoint = HttpResponse(template.render(context, request))
+    return endpoint
 
 @login_required
 def profile(request):
