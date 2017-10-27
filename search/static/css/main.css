@@ -40,18 +40,15 @@ ul#article_xml_attributes li{width: 80%; border: 1px solid black; margin: 0 auto
   background-color: white;
   color: rgba(58,23,114,0.7);
   text-align: left;
-  padding:0.35em 0 0.25em 0.35em;
-}
-
-.resource_list_li:nth-of-type(odd){
-  background-color: rgba(58,23,114,0.7);
-}
-
-.resource_list_li:nth-of-type(odd) a{
-  color: white;
+  padding:0.5em 0 0.25em 0.5em;
+  margin-bottom: 0.25em;
 }
 
 .resource_list_li a{
   text-decoration: none;
   color: rgba(58,23,114,0.7);
+}
+
+.resource_list_li a:hover{
+  font-size: 1.4em;
 }

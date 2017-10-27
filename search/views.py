@@ -77,14 +77,14 @@ def curate_arxiv_article(request, pk):
 
     if pk != None:
         article = get_object_or_404(Article, pk=pk)
+        user_arxiv_xml_inst = article.user_arxiv_xml
         form = ArticleForm(request.POST, instance=article)
     else:
+        user_arxiv_xml_inst = get_object_or_404(UserArxivXML, pk= request.session.get('user_arxiv_xml_id', False))
         form = ArticleForm(request.POST)
 
     if form.is_valid():
-        user_arxiv_xml_inst = get_object_or_404(UserArxivXML, pk= request.session.get('user_arxiv_xml_id', False))
         arxiv_xml_inst = user_arxiv_xml_inst.arxiv_xml
-
         if pk != None:
             article_inst = form
         else:
@@ -103,9 +103,9 @@ def curate_arxiv_article(request, pk):
 
         article_inst.save()
 
-
         user_arxiv_xml_inst.curated = True
         user_arxiv_xml_inst.save()
+
     return HttpResponseRedirect(referer)
 
 @login_required
