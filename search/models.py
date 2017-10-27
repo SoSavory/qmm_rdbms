@@ -47,6 +47,7 @@ class Article(models.Model):
     trap = models.BooleanField()
     spin_imbalance = models.BooleanField()
     mass_imbalance = models.BooleanField()
+    context = models.TextField()
 
     title = models.CharField(max_length=200)
     authors = models.CharField(max_length=200)
