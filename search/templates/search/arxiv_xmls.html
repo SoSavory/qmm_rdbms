@@ -1,0 +1,31 @@
+{% extends 'search/base_generic.html' %}
+
+{% block content %}
+
+<p>{{ multiple_curation_arxiv_xmls|length }} Multicurated Articles</p>
+<ul class="resource_list">
+  {% for arxiv_xml in multiple_curation_arxiv_xmls %}
+    <li class="resource_list_li">
+      <a href="">{{ arxiv_xml.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<p>{{ curated_arxiv_xmls|length }} Curated Articles</p>
+<ul class="resource_list">
+  {% for arxiv_xml in curated_arxiv_xmls %}
+    <li class="resource_list_li">
+      <a href="">{{ arxiv_xml.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+  <p>{{ uncurated_arxiv_xmls|length }} Uncurated Articles</p>
+  <ul class="resource_list">
+    {% for arxiv_xml in uncurated_arxiv_xmls %}
+      <li class="resource_list_li">
+        <a href="">{{ arxiv_xml.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

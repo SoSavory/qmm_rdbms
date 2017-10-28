@@ -5,6 +5,8 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index' ),
 
+    url(r'^arxiv_xmls/$', views.arxiv_xmls, name='arxiv_xmls'),
+
     url(r'^articles/$', views.articles, name='articles'),
     url(r'^articles/(?P<article_id>[0-9]+)/$', views.article, name='article'),
 

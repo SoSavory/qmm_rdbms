@@ -128,6 +128,27 @@ def handle_arxiv_xml_upload(request):
     return redirect('upload_arxiv_xml')
 
 @login_required
+def arxiv_xmls(request):
+    template = loader.get_template('search/arxiv_xmls.html')
+
+    # Need to use loops
+    uncurated_arxiv_xmls         = set()
+    curated_arxiv_xmls           = set()
+    multiple_curation_arxiv_xmls = set()
+
+    for arxiv_xml in ArxivXML.objects.prefetch_related('userarxivxml_set'):
+        arxiv_xml_curated_count = arxiv_xml.userarxivxml_set.all().filter(curated=True).count()
+        if arxiv_xml_curated_count > 1:
+            multiple_curation_arxiv_xmls.add(arxiv_xml)
+        elif arxiv_xml_curated_count == 1:
+            curated_arxiv_xmls.add(arxiv_xml)
+        else:
+            uncurated_arxiv_xmls.add(arxiv_xml)
+    context = {'uncurated_arxiv_xmls': uncurated_arxiv_xmls, 'curated_arxiv_xmls': curated_arxiv_xmls, 'multiple_curation_arxiv_xmls': multiple_curation_arxiv_xmls}
+
+    return HttpResponse(template.render(context, request))
+
+@login_required
 def articles(request):
     template = loader.get_template('search/articles.html')
     arxiv_xmls = UserArxivXML.objects.filter(user_id = request.user.id).filter(curated="1")
@@ -145,6 +166,7 @@ def uncurated_articles(request):
 
     context = {'uncurated_articles': uncurated_articles}
     return HttpResponse(template.render(context, request))
+
 
 @login_required
 def article(request, article_id):
